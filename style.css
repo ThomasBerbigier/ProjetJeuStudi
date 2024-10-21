@@ -3,10 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 @font-face {
     font-family: lato;
     src: url(images/Lato/Lato-Black.ttf);
-} 
+}
+
 main {
     background: linear-gradient(to right,#FFE5E5 50%, rgb(255,255,255) 50%);
     width: auto;
@@ -16,92 +18,172 @@ main {
     border-radius: 10px;
     border: #622A0F solid 5px;
 }
+
 .content {
     display: grid;
-    grid-template-columns: 4fr 3fr 4fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 150px 150px 50px 50px;
     grid-template-areas:
     "player-1 new-game player-2"
     "score-1 dice score-2"
     "current-1 roll-dice current-2"
     "current-1 hold current-2";
+    gap: 20px;
 }
+
+/* Joueur 1 */
 .player-1 {
     grid-area: player-1;
     display: flex;
-    align-items: self-end;
+    align-items: flex-end;
     justify-content: center;
     padding-bottom: 10px;
+    text-align: center;
+    font-size: 2.5rem;
 }
+
+/* Score joueur 1 */
 .score-1 {
     grid-area: score-1;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 4rem;
 }
+
+/* Section score courant du joueur 1 */
 .current-1 {
     grid-area: current-1;
     background-color: #DC3545;
-    display: flex ;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 1px 30px 1px 30px;
+    padding: 10px 30px;
+    color: white;
+    text-align: center;
 }
+
+/* Joueur 2 */
 .player-2 {
     grid-area: player-2;
     display: flex;
-    align-items: self-end;
+    align-items: flex-end;
     justify-content: center;
     padding-bottom: 10px;
+    text-align: center;
+    font-size: 2.5rem;
 }
+
+/* Score joueur 2 */
 .score-2 {
     grid-area: score-2;
     display: flex;
     justify-content: center;
-    align-items: center;               
+    align-items: center;
+    font-size: 4rem;
 }
+
+/* Section score courant du joueur 2 */
 .current-2 {
     grid-area: current-2;
     background-color: #DC3545;
-    display: flex ;
-    flex-direction : column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 1px 30px 1px 30px;
-    
-}
-.current-score-1, .current-score-2{
+    padding: 10px 30px;
     color: white;
+    text-align: center;
 }
+
+/* Bouton New Game centré en haut */
 .new-game {
     grid-area: new-game;
     display: flex;
     justify-content: center;
-    justify-items: center;
     align-items: center;
-    padding-bottom: 50%;
-    margin-top: 30px;  
+    margin-top: 30px;
+    flex-direction: column;
 }
+
+/* Bouton Roll Dice */
 .roll-dice {
     grid-area: roll-dice;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10%;
 }
+
+/* Bouton Hold */
 .hold {
     grid-area: hold;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+/* Dé centré */
 .dice {
     grid-area: dice;
     display: flex;
     justify-content: center;
-    align-items: self-start;
+    align-items: center;
 }
 
+.dice img {
+    width: 150px;
+    max-width: 100%;
+}
+
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+    main {
+        margin: 5%;
+        padding: 3%;
+    }
+
+    .content {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-areas:
+        "player-1 player-2"
+        "score-1 score-2"
+        "current-1 current-2"
+        "dice dice"
+        "roll-dice hold"
+        "new-game new-game";
+    }
+
+    /* Ajustement des tailles pour les petits écrans */
+    .player-1, .player-2 {
+        font-size: 1.8rem;
+    }
+
+    .score-1, .score-2 {
+        font-size: 2.5rem;
+    }
+
+    .dice img {
+        width: 100px; /* Ajuster la taille du dé sur petit écran */
+        max-width: 100%;
+    }
+
+    .current-1, .current-2 {
+        padding: 5px 20px;
+    }
+
+    .new-game {
+        grid-column: span 2;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .roll-dice, .hold {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
